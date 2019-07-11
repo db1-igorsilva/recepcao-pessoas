@@ -18,7 +18,11 @@ public class VisitService {
     private VisitRepository visitRepository;
 
     public List<VisitDTO> getByDate(LocalDate date) {
-        return visitRepository.findByDate(date);
+        List<Visit> visitsOnThatDate = visitRepository.findByDate(date);
+        List<VisitDTO> visitsDtos = visitsOnThatDate.stream()
+                .map(visit -> visitToDto(visit))
+                .collect(Collectors.toList());
+        return visitsDtos;
     }
 
     public List<VisitDTO> getByGuest(Guest guest) {
