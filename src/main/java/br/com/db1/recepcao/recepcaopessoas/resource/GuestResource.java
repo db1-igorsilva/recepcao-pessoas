@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/guest")
@@ -28,6 +29,11 @@ public class GuestResource {
     @GetMapping(value = "/getByRelationshipType/{relationshipType}")
     public List<GuestDTO> getByRelationshipType(@PathVariable("relationshipType") RelationshipType relationshipType) {
         return guestService.getByRelationshipType(relationshipType);
+    }
+
+    @PutMapping(value = "/{id}")
+    public GuestDTO put(@PathVariable("id") UUID id, @RequestBody GuestDTO body) {
+        return guestService.put(id, body);
     }
 
 }
