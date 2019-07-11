@@ -94,7 +94,35 @@ public class Visit {
 
     // METHODS
 
-    // GETTERS
+    // GETTERS AND SETTERS
+    
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public void setPresentationStartTime(LocalTime presentationStartTime) {
+        this.presentationStartTime = presentationStartTime;
+    }
+
+    public void setPresentationEndTime(LocalTime presentationEndTime) {
+        this.presentationEndTime = presentationEndTime;
+    }
+
+    public void setGuest(Guest guest) {
+        this.guest = guest;
+    }
+
+    public void setPersons(List<String> persons) {
+        this.persons = persons;
+    }
+
+    public void setWelcomeText(String welcomeText) {
+        this.welcomeText = welcomeText;
+    }
 
     public UUID getId() {
         return id;
