@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class VisitDTO implements Serializable {
@@ -35,6 +36,27 @@ public class VisitDTO implements Serializable {
         setGuest(guest);
         setPersons(persons);
         setWelcomeText(welcomeText);
+    }
+
+    // EQUALS AND HASH
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof VisitDTO)) return false;
+        VisitDTO visitDTO = (VisitDTO) o;
+        return id.equals(visitDTO.id) &&
+                date.equals(visitDTO.date) &&
+                presentationStartTime.equals(visitDTO.presentationStartTime) &&
+                presentationEndTime.equals(visitDTO.presentationEndTime) &&
+                guest.equals(visitDTO.guest) &&
+                persons.equals(visitDTO.persons) &&
+                welcomeText.equals(visitDTO.welcomeText);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     // GETTERS AND SETTERS
