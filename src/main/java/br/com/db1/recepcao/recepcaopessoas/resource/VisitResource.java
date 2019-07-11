@@ -31,4 +31,9 @@ public class VisitResource {
         return visitService.put(id, body);
     }
 
+    @DeleteMapping(value = "/{id}")
+    public void delete(@PathVariable("id") UUID id) {
+        visitService.delete(id);
+    }
+
 }
