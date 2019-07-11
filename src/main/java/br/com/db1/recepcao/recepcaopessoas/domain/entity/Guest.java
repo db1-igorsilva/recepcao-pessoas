@@ -20,6 +20,38 @@ public class Guest {
     @Column(name = "relationship_type", nullable = false)
     private RelationshipType relationshipType;
 
+    // BUILDER
+
+    public static class GuestBuilder {
+
+        private String name;
+        private RelationshipType relationshipType;
+
+        public GuestBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public GuestBuilder relatedBy(RelationshipType relationshipType) {
+            this.relationshipType = relationshipType;
+            return this;
+        }
+
+        public Guest build() {
+            return new Guest(this);
+        }
+
+    }
+
+    // CONSTRUCTOR
+
     protected Guest() {}
+
+    private Guest(GuestBuilder builder) {
+        name = builder.name;
+        relationshipType = builder.relationshipType;
+    }
+
+    // METHODS
 
 }
