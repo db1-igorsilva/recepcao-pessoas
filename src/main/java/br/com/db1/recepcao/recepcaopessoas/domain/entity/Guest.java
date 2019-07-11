@@ -20,4 +20,6 @@ public class Guest {
     @Column(name = "relationship_type", nullable = false)
     private RelationshipType relationshipType;
 
+    protected Guest() {}
+
 }
