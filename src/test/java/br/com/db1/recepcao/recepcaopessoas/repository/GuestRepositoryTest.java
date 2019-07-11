@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 public class GuestRepositoryTest {
 
-    private final static String guestName = "University";
+    private String guestName = "University";
     private GuestRepository fakeGuestRepository = mock(GuestRepository.class);
     private Guest universityGuest = new Guest.GuestBuilder()
             .guestName(guestName)
