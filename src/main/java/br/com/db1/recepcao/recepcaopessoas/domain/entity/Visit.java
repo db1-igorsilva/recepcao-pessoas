@@ -94,4 +94,34 @@ public class Visit {
 
     // METHODS
 
+    // GETTERS
+
+    public UUID getId() {
+        return id;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public LocalTime getPresentationStartTime() {
+        return presentationStartTime;
+    }
+
+    public LocalTime getPresentationEndTime() {
+        return presentationEndTime;
+    }
+
+    public Guest getGuest() {
+        return guest;
+    }
+
+    public List<String> getPersons() {
+        return persons;
+    }
+
+    public String getWelcomeText() {
+        return welcomeText;
+    }
+
 }
