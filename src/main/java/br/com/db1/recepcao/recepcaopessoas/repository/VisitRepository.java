@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public interface VisitRepository extends JpaRepository<Visit, UUID> {
 
-    List<VisitDTO> findByDate(LocalDate date);
-    List<VisitDTO> findByGuest(Guest guest);
+    List<Visit> findByDate(LocalDate date);
+    List<Visit> findByGuest(Guest guest);
 
 }
