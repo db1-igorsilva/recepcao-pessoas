@@ -22,6 +22,22 @@ public class VisitService {
     @Autowired
     private GuestRepository guestRepository;
 
+    // CREATE
+
+    public VisitDTO save(VisitDTO dto) {
+        Visit visit = new Visit.VisitBuilder()
+                .onDate(dto.getDate())
+                .startingAt(dto.getPresentationStartTime())
+                .endingAt(dto.getPresentationEndTime())
+                .byGuest(dto.getGuest())
+                .byPersons(dto.getPersons())
+                .withWelcomeText(dto.getWelcomeText())
+                .build();
+        return visitToDto(visitRepository.save(visit));
+    }
+
+    // READ
+
     public List<VisitDTO> getByDate(LocalDate date) {
         List<Visit> visitsOnThatDate = visitRepository.findByDate(date);
         List<VisitDTO> visitsDtos = visitsOnThatDate.stream()
