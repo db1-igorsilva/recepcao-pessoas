@@ -19,4 +19,7 @@ public class Visit {
     @Column(name = "presentation_start_time", nullable = false)
     private LocalTime presentationStartTime;
 
+    @Column(name = "presentation_end_time", nullable = false)
+    private LocalTime presentationEndTime;
+
 }
