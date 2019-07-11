@@ -55,6 +55,21 @@ public class VisitService {
         return visitsDto;
     }
 
+    // UPDATE
+
+    public VisitDTO put(UUID id, VisitDTO dto) {
+        Visit visitToUpdate = visitRepository.getOne(id);
+        visitToUpdate.setDate(dto.getDate());
+        visitToUpdate.setPresentationStartTime(dto.getPresentationStartTime());
+        visitToUpdate.setPresentationEndTime(dto.getPresentationEndTime());
+        visitToUpdate.setGuest(dto.getGuest());
+        visitToUpdate.setPersons(dto.getPersons());
+        visitToUpdate.setWelcomeText(dto.getWelcomeText());
+        return visitToDto(visitRepository.save(visitToUpdate));
+    }
+
+    // METHODS
+
     private VisitDTO visitToDto(Visit visit) {
         return new VisitDTO(visit.getId(), visit.getDate(),
                 visit.getPresentationStartTime(), visit.getPresentationEndTime(),
