@@ -22,4 +22,11 @@ public class GuestService {
         return guestToDto(guestRepository.save(guest));
     }
 
+    // METHODS
+
+    private GuestDTO guestToDto(Guest guest) {
+        return new GuestDTO(guest.getId(), guest.getName(),
+                guest.getRelationshipType());
+    }
+
 }
