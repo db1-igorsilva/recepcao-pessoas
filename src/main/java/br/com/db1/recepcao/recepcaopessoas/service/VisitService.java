@@ -17,10 +17,10 @@ import java.util.stream.Collectors;
 public class VisitService {
 
     @Autowired
-    private VisitRepository visitRepository;
+    private GuestRepository guestRepository;
 
     @Autowired
-    private GuestRepository guestRepository;
+    private VisitRepository visitRepository;
 
     // CREATE
 
