@@ -27,7 +27,7 @@ public class Guest {
         private String name;
         private RelationshipType relationshipType;
 
-        public GuestBuilder name(String name) {
+        public GuestBuilder guestName(String name) {
             this.name = name;
             return this;
         }
