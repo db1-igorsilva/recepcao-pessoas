@@ -49,10 +49,10 @@ public class VisitService {
     public List<VisitDTO> getByGuest(UUID id) {
         Guest guest = guestRepository.getOne(id);
         List<Visit> visitsFromTheGuest = visitRepository.findByGuest(guest);
-        List<VisitDTO> visitsDto = visitsFromTheGuest.stream()
+        List<VisitDTO> visitsDtos = visitsFromTheGuest.stream()
                 .map(visit -> visitToDto(visit))
                 .collect(Collectors.toList());
-        return visitsDto;
+        return visitsDtos;
     }
 
     // UPDATE
