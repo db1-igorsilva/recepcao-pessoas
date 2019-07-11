@@ -54,4 +54,18 @@ public class Guest {
 
     // METHODS
 
+    // GETTERS
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public RelationshipType getRelationshipType() {
+        return relationshipType;
+    }
+    
 }
