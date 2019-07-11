@@ -2,10 +2,7 @@ package br.com.db1.recepcao.recepcaopessoas.domain.entity;
 
 import org.springframework.data.annotation.Id;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -16,4 +13,7 @@ public class Guest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
+    @Column(name = "name", nullable = false, unique = true)
+    private String name;
+    
 }
