@@ -15,5 +15,9 @@ public class Guest {
 
     @Column(name = "name", nullable = false, unique = true)
     private String name;
-    
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "relationship_type", nullable = false)
+    private RelationshipType relationshipType;
+
 }
