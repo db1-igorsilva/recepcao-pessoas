@@ -68,6 +68,13 @@ public class VisitService {
         return visitToDto(visitRepository.save(visitToUpdate));
     }
 
+    // DELETE
+
+    public void delete(UUID id) {
+        Visit visitToDelete = visitRepository.getOne(id);
+        visitRepository.delete(visitToDelete);
+    }
+
     // METHODS
 
     private VisitDTO visitToDto(Visit visit) {
