@@ -37,7 +37,7 @@ public class GuestDTO implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getRelationshipType());
+        return Objects.hash(getId(), getName());
     }
 
     // GETTERS AND SETTERS
