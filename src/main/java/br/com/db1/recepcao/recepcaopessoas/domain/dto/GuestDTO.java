@@ -18,9 +18,9 @@ public class GuestDTO implements Serializable {
 
     public GuestDTO(UUID id, String name,
                     RelationshipType relationshipType) {
-        this.id = id;
-        this.name = name;
-        this.relationshipType = relationshipType;
+        setId(id);
+        setName(name);
+        setRelationshipType(relationshipType);
     }
 
     // EQUALS AND HASH
