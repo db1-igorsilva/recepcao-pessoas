@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
 
 public class GuestTest {
-    
+
     private final static String name = "Guest Name";
     private final static RelationshipType relationship = RelationshipType.CLIENT;
 
