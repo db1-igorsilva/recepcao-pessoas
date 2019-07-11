@@ -41,4 +41,11 @@ public class VisitTest {
         assertNotNull(visit);
     }
 
+    @Test
+    public void mustReturnAllPersonsOnVisit() {
+        List<String> persons = visit.getPersons();
+        assertEquals(4, persons.size());
+        assertThat(persons, not(empty()));
+    }
+
 }
