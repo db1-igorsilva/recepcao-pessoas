@@ -3,6 +3,7 @@ package br.com.db1.recepcao.recepcaopessoas.domain.entity;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -24,5 +25,8 @@ public class Visit {
 
     @Column(name = "guest", nullable = false)
     private Guest guest;
+
+    @Column(name = "names", nullable = false)
+    List<String> names;
 
 }
