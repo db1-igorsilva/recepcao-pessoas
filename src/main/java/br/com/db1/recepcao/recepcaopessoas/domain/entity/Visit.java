@@ -95,10 +95,6 @@ public class Visit {
     // METHODS
 
     // GETTERS AND SETTERS
-    
-    public void setId(UUID id) {
-        this.id = id;
-    }
 
     public void setDate(LocalDate date) {
         this.date = date;
