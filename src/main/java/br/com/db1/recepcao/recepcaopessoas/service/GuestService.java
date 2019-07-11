@@ -22,6 +22,13 @@ public class GuestService {
         return guestToDto(guestRepository.save(guest));
     }
 
+    // READ
+
+    public GuestDTO getByName(String name) {
+        Guest guest = guestRepository.findByName(name);
+        return guestToDto(guest);
+    }
+
     // METHODS
 
     private GuestDTO guestToDto(Guest guest) {
