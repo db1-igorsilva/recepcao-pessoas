@@ -36,4 +36,9 @@ public class VisitTest {
                 .build();
     }
 
+    @Test
+    public void visitCreatedOnBeforeMusntBeNull() {
+        assertNotNull(visit);
+    }
+
 }
