@@ -27,6 +27,6 @@ public class Visit {
     private Guest guest;
 
     @Column(name = "names", nullable = false)
-    List<String> names;
+    private List<String> names;
 
 }
