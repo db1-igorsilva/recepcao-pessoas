@@ -1,6 +1,7 @@
 package br.com.db1.recepcao.recepcaopessoas.domain.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -10,5 +11,8 @@ public class Visit {
     @Id
     @GeneratedValue(GenerationType.IDENTITY)
     private UUID id;
+
+    @Column(name = "date", nullable = false)
+    private LocalDate date;
 
 }
