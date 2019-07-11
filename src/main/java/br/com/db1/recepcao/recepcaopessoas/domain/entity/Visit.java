@@ -9,10 +9,12 @@ import java.util.UUID;
 public class Visit {
 
     @Id
-    @GeneratedValue(GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
     @Column(name = "date", nullable = false)
     private LocalDate date;
+
+    
 
 }
