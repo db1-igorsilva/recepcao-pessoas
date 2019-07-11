@@ -36,4 +36,9 @@ public class GuestResource {
         return guestService.put(id, body);
     }
 
+    @DeleteMapping(value = "/{id}")
+    public void delete(@PathVariable("id") UUID id) {
+        guestService.delete(id);
+    }
+
 }
