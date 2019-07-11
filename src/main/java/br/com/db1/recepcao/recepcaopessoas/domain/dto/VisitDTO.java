@@ -1,6 +1,8 @@
 package br.com.db1.recepcao.recepcaopessoas.domain.dto;
 
-public class VisitDTO {
+import java.io.Serializable;
+
+public class VisitDTO implements Serializable {
 
     
 
