@@ -2,9 +2,13 @@ package br.com.db1.recepcao.recepcaopessoas.service;
 
 import br.com.db1.recepcao.recepcaopessoas.domain.dto.GuestDTO;
 import br.com.db1.recepcao.recepcaopessoas.domain.entity.Guest;
+import br.com.db1.recepcao.recepcaopessoas.domain.entity.RelationshipType;
 import br.com.db1.recepcao.recepcaopessoas.repository.GuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class GuestService {
@@ -27,6 +31,14 @@ public class GuestService {
     public GuestDTO getByName(String name) {
         Guest guest = guestRepository.findByName(name);
         return guestToDto(guest);
+    }
+
+    public List<GuestDTO> getByRelationshipType(RelationshipType relationshipType) {
+        List<Guest> guestsWithThatRelationshipType = guestRepository.findByRelationshipType(relationshipType);
+        List<GuestDTO> guestsDtos = guestsWithThatRelationshipType.stream()
+                .map(guest -> guestToDto(guest))
+                .collect(Collectors.toList());
+        return guestsDtos;
     }
 
     // METHODS
