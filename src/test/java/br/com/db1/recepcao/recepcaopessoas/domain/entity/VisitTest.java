@@ -21,7 +21,7 @@ public class VisitTest {
             .relatedBy(RelationshipType.OTHER)
             .build();
     private final static List<String> persons = asList("First Guest", "Second Guest", "Third Guest", "Last Guest");
-    private final static String welcomeText = "Bem-Vindos, convidados da Company";
+    private final static String welcomeText = "W3lcome, Company guests";
     private Visit visit;
 
     @Before
