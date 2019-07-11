@@ -3,6 +3,7 @@ package br.com.db1.recepcao.recepcaopessoas.domain.dto;
 import br.com.db1.recepcao.recepcaopessoas.domain.entity.RelationshipType;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.UUID;
 
 public class GuestDTO implements Serializable {
@@ -20,6 +21,23 @@ public class GuestDTO implements Serializable {
         this.id = id;
         this.name = name;
         this.relationshipType = relationshipType;
+    }
+
+    // EQUALS AND HASH
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof GuestDTO)) return false;
+        GuestDTO guestDTO = (GuestDTO) o;
+        return getId().equals(guestDTO.getId()) &&
+                getName().equals(guestDTO.getName()) &&
+                getRelationshipType() == guestDTO.getRelationshipType();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getRelationshipType());
     }
 
     // GETTERS AND SETTERS
