@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -39,6 +40,15 @@ public class GuestService {
                 .map(guest -> guestToDto(guest))
                 .collect(Collectors.toList());
         return guestsDtos;
+    }
+
+    // UPDATE
+
+    public GuestDTO put(UUID id, GuestDTO dto) {
+        Guest guestToUpdate = guestRepository.getOne(id);
+        guestToUpdate.setName(dto.getName());
+        guestToUpdate.setRelationshipType(dto.getRelationshipType());
+        return guestToDto(guestRepository.save(guestToUpdate));
     }
 
     // METHODS
