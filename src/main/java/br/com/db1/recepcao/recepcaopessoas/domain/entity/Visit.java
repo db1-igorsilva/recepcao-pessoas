@@ -22,4 +22,7 @@ public class Visit {
     @Column(name = "presentation_end_time", nullable = false)
     private LocalTime presentationEndTime;
 
+    @Column(name = "guest", nullable = false)
+    private Guest guest;
+
 }
