@@ -6,8 +6,8 @@ import static org.junit.Assert.assertNotNull;
 
 public class GuestTest {
 
-    private final static String name = "Guest Name";
-    private final static RelationshipType relationship = RelationshipType.CLIENT;
+    private String name = "Guest Name";
+    private RelationshipType relationship = RelationshipType.CLIENT;
 
     @Test
     public void mustCreateOneGuest() {
