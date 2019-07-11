@@ -29,4 +29,7 @@ public class Visit {
     @Column(name = "names", nullable = false)
     private List<String> names;
 
+    @Column(name = "welcome_text", nullable = false)
+    private String welcomeText;
+
 }
