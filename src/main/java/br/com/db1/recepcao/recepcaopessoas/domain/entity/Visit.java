@@ -26,8 +26,8 @@ public class Visit {
     @Column(name = "guest", nullable = false)
     private Guest guest;
 
-    @Column(name = "names", nullable = false)
-    private List<String> names;
+    @Column(name = "persons", nullable = false)
+    private List<String> persons;
 
     @Column(name = "welcome_text", nullable = false)
     private String welcomeText;
@@ -88,7 +88,7 @@ public class Visit {
         presentationStartTime = builder.presentationStartTime;
         presentationEndTime = builder.presentationEndTime;
         guest = builder.guest;
-        names = builder.persons;
+        persons = builder.persons;
         welcomeText = builder.welcomeText;
     }
 
