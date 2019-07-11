@@ -20,7 +20,7 @@ public class VisitResource {
 
     @GetMapping(value = "/getByDate/{date}")
     public List<VisitDTO> getByDate(@RequestParam("date") LocalDate date) {
-//
+        return visitService.getByDate(date);
     }
 
 }
