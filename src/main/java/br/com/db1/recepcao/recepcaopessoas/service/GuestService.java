@@ -51,6 +51,13 @@ public class GuestService {
         return guestToDto(guestRepository.save(guestToUpdate));
     }
 
+    // DELETE
+
+    public void delete(UUID id) {
+        Guest guestToDelete = guestRepository.getOne(id);
+        guestRepository.delete(guestToDelete);
+    }
+
     // METHODS
 
     private GuestDTO guestToDto(Guest guest) {
