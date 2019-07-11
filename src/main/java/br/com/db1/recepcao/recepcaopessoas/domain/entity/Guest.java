@@ -54,7 +54,15 @@ public class Guest {
 
     // METHODS
 
-    // GETTERS
+    // GETTERS AND SETTERS
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setRelationshipType(RelationshipType relationshipType) {
+        this.relationshipType = relationshipType;
+    }
 
     public UUID getId() {
         return id;
