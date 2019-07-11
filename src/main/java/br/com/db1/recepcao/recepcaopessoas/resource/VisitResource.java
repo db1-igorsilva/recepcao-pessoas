@@ -16,6 +16,11 @@ public class VisitResource {
     @Autowired
     private VisitService visitService;
 
+    @PostMapping
+    public VisitDTO post(@RequestBody VisitDTO body) {
+        return visitService.save(body);
+    }
+
     @GetMapping(value = "/getByDate/{date}")
     public List<VisitDTO> getByDate(@PathVariable("date") LocalDate date) {
         return visitService.getByDate(date);
