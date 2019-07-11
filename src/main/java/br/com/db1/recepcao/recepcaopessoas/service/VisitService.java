@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,7 +30,8 @@ public class VisitService {
         return visitsDtos;
     }
 
-    public List<VisitDTO> getByGuest(Guest guest) {
+    public List<VisitDTO> getByGuest(UUID id) {
+        Guest guest = guestRepository.getOne(id);
         List<Visit> visitsFromTheGuest = visitRepository.findByGuest(guest);
         List<VisitDTO> visitsDto = visitsFromTheGuest.stream()
                 .map(visit -> visitToDto(visit))
