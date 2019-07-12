@@ -19,6 +19,8 @@ public class VisitPerson {
     @JoinColumn(name = "id_visit", nullable = false, referencedColumnName = "id")
     private Visit visit;
 
+    protected VisitPerson() { }
+
     public VisitPerson(List<Person> persons, Visit visit) {
         this.persons = persons;
         this.visit = visit;
