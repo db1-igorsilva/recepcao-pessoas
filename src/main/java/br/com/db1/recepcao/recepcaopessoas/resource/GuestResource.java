@@ -16,7 +16,7 @@ public class GuestResource {
     @Autowired
     private GuestService guestService;
 
-    @PostMapping
+    @PostMapping(value = "/post")
     public GuestDTO post(@RequestBody GuestDTO body) {
         return guestService.save(body);
     }
