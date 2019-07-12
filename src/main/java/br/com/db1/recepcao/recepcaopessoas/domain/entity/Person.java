@@ -12,13 +12,48 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
-    @Column(name = "nome", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "cpf", nullable = false)
     private String cpf;
 
-    @Column(name = "data_nascimento", nullable = false)
-    private LocalDate data_nascimento;
+    @Column(name = "birthDate", nullable = false)
+    private LocalDate birthDate;
+
+    private Person(PersonBuilder builder) {
+        this.name = builder.name;
+        this.cpf = builder.cpf;
+        this.birthDate = builder.birthDate;
+    }
+
+    // BUILDER
+
+    public static class PersonBuilder {
+
+        private String name;
+        private String cpf;
+        private LocalDate birthDate;
+
+        public PersonBuilder personName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public PersonBuilder personCpf(String cpf) {
+            this.cpf = cpf;
+            return this;
+        }
+
+        public PersonBuilder birthDate(LocalDate birthDate) {
+            this.birthDate = birthDate;
+            return this;
+        }
+
+        public Person build() {
+            return new Person(this);
+        }
+
+    }
 
 }
