@@ -1,6 +1,8 @@
 package br.com.db1.recepcao.recepcaopessoas.domain.dto;
 
 import br.com.db1.recepcao.recepcaopessoas.domain.entity.Guest;
+import br.com.db1.recepcao.recepcaopessoas.domain.entity.Person;
+import br.com.db1.recepcao.recepcaopessoas.domain.entity.VisitPerson;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -18,7 +20,7 @@ public class VisitDTO implements Serializable {
     private LocalTime presentationStartTime;
     private LocalTime presentationEndTime;
     private Guest guest;
-    private List<String> persons;
+    private List<VisitPerson> visitPerson;
     private String welcomeText;
 
     // CONSTRUCTOR
@@ -27,14 +29,14 @@ public class VisitDTO implements Serializable {
                     LocalTime presentationStartTime,
                     LocalTime presentationEndTime,
                     Guest guest,
-                    List<String> persons,
+                    List<VisitPerson> persons,
                     String welcomeText) {
         setId(id);
         setDate(date);
         setPresentationStartTime(presentationStartTime);
         setPresentationEndTime(presentationEndTime);
         setGuest(guest);
-        setPersons(persons);
+        setVisitPerson(persons);
         setWelcomeText(welcomeText);
     }
 
@@ -50,7 +52,7 @@ public class VisitDTO implements Serializable {
                 presentationStartTime.equals(visitDTO.presentationStartTime) &&
                 presentationEndTime.equals(visitDTO.presentationEndTime) &&
                 guest.equals(visitDTO.guest) &&
-                persons.equals(visitDTO.persons) &&
+                visitPerson.equals(visitDTO.visitPerson) &&
                 welcomeText.equals(visitDTO.welcomeText);
     }
 
@@ -101,12 +103,12 @@ public class VisitDTO implements Serializable {
         this.guest = guest;
     }
 
-    public List<String> getPersons() {
-        return persons;
+    public List<VisitPerson> getVisitPerson() {
+        return visitPerson;
     }
 
-    public void setPersons(List<String> persons) {
-        this.persons = persons;
+    public void setVisitPerson(List<VisitPerson> visitPerson) {
+        this.visitPerson = visitPerson;
     }
 
     public String getWelcomeText() {
