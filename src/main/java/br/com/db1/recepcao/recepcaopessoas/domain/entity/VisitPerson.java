@@ -6,21 +6,21 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "visit_guest")
-public class VisitGuest {
+public class VisitPerson {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
-    @OneToMany(name = "person", nullable = false)
-    private List<Person> person;
+    @OneToMany(mappedBy = "visit_person", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Person> persons;
 
     @ManyToOne
     @JoinColumn(name = "id_visit", nullable = false, referencedColumnName = "id")
     private Visit visit;
 
-    public VisitGuest(Guest guest, Visit visit) {
-        this.guest = guest;
+    public VisitPerson(List<Person> persons, Visit visit) {
+        this.persons = persons;
         this.visit = visit;
     }
 
