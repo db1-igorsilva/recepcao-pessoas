@@ -1,7 +1,5 @@
 package br.com.db1.recepcao.recepcaopessoas.domain.entity;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -19,6 +17,15 @@ public class Guest {
     @Enumerated(EnumType.STRING)
     @Column(name = "relationship_type", nullable = false)
     private RelationshipType relationshipType;
+
+    // CONSTRUCTOR
+
+    protected Guest() {}
+
+    private Guest(GuestBuilder builder) {
+        name = builder.name;
+        relationshipType = builder.relationshipType;
+    }
 
     // BUILDER
 
@@ -41,15 +48,6 @@ public class Guest {
             return new Guest(this);
         }
 
-    }
-
-    // CONSTRUCTOR
-
-    protected Guest() {}
-
-    private Guest(GuestBuilder builder) {
-        name = builder.name;
-        relationshipType = builder.relationshipType;
     }
 
     // METHODS
