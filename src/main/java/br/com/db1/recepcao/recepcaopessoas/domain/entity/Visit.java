@@ -25,7 +25,7 @@ public class Visit {
     private LocalTime presentationEndTime;
 
     @ManyToOne
-    @JoinColumn(name = "id_guest", nullable = false, referencedColumnName = "id")
+    @JoinColumn(name = "id_guest", referencedColumnName = "id")
     private Guest guest;
 
     @OneToMany(mappedBy = "visit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
