@@ -24,4 +24,25 @@ public class VisitPerson {
         this.visit = visit;
     }
 
+    // GETTERS AND SETTERS
+
+    public UUID getId() {
+        return id;
+    }
+
+    public List<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List<Person> persons) {
+        this.persons = persons;
+    }
+
+    public Visit getVisit() {
+        return visit;
+    }
+
+    public void setVisit(Visit visit) {
+        this.visit = visit;
+    }
 }
