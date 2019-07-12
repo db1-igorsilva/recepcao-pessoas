@@ -20,18 +20,28 @@ public class VisitTest {
             .guestName("Company")
             .relatedBy(RelationshipType.OTHER)
             .build();
-    private List<String> persons = asList("First Guest", "Second Guest", "Third Guest", "Last Guest");
+    private Person firstPerson = new Person.PersonBuilder()
+                                            .personName("First Guest")
+                                            .personCpf("107.463.599-00")
+                                            .birthDate(LocalDate.parse("2000-11-16"))
+                                            .build();
+    private Person secondPerson = new Person.PersonBuilder()
+                                            .personName("Second Guest")
+                                            .personCpf("107.465.599-00")
+                                            .birthDate(LocalDate.parse("2000-11-16"))
+                                            .build();
     private String welcomeText = "W3lcome, Company guests";
     private Visit visit;
 
     @Before
     public void before() {
+        List<VisitPerson> visitPeople = asList(new VisitPerson(firstPerson, visit), new VisitPerson(secondPerson, visit));
         visit = new Visit.VisitBuilder()
                 .onDate(date)
                 .startingAt(presentationStartTime)
                 .endingAt(presentationEndTime)
                 .byGuest(guest)
-                .byPersons(persons)
+                .byVisitPerson(visitPeople)
                 .withWelcomeText(welcomeText)
                 .build();
     }
@@ -43,9 +53,9 @@ public class VisitTest {
 
     @Test
     public void mustReturnAllPersonsOnVisit() {
-        List<String> persons = visit.getPersons();
-        assertEquals(4, persons.size());
-        assertThat(persons, not(empty()));
+        List<VisitPerson> visitPeople = visit.getVisitPerson();
+        assertThat(visitPeople, not(empty()));
+        assertEquals(2, visitPeople.size());
     }
 
 }

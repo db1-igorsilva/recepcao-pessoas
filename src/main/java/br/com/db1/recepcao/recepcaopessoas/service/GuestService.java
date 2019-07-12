@@ -61,7 +61,7 @@ public class GuestService {
     // METHODS
 
     private GuestDTO guestToDto(Guest guest) {
-        return new GuestDTO(guest.getId(), guest.getName(),
+        return new GuestDTO(guest.getUuid(), guest.getName(),
                 guest.getRelationshipType());
     }
 

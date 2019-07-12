@@ -78,7 +78,7 @@ public class VisitService {
     // METHODS
 
     private VisitDTO visitToDto(Visit visit) {
-        return new VisitDTO(visit.getId(), visit.getDate(),
+        return new VisitDTO(visit.getUuid(), visit.getDate(),
                 visit.getPresentationStartTime(), visit.getPresentationEndTime(),
                 visit.getGuest(), visit.getVisitPerson(), visit.getWelcomeText());
     }
