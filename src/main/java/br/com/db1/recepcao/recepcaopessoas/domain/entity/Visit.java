@@ -29,7 +29,7 @@ public class Visit {
     private Guest guest;
 
     @OneToMany(mappedBy = "visit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<VisitPerson> persons = new ArrayList<>();
+    private List<VisitPerson> visitPerson = new ArrayList<>();
 
     @Column(name = "welcome_text", nullable = false)
     private String welcomeText;
@@ -43,7 +43,7 @@ public class Visit {
         presentationStartTime = builder.presentationStartTime;
         presentationEndTime = builder.presentationEndTime;
         guest = builder.guest;
-        persons = builder.persons;
+        visitPerson = builder.persons;
         welcomeText = builder.welcomeText;
     }
 
@@ -96,6 +96,10 @@ public class Visit {
 
     // METHODS
 
+    public void addPerson(Person person) {
+        this.visitPerson.add(new VisitPerson(person, this));
+    }
+
     // GETTERS AND SETTERS
 
     public void setDate(LocalDate date) {
@@ -114,8 +118,8 @@ public class Visit {
         this.guest = guest;
     }
 
-    public void setPersons(List<Person> persons) {
-        this.persons.add(new VisitPerson(persons, this));
+    public void setVisitPerson(List<VisitPerson> visitPerson) {
+        this.visitPerson = visitPerson;
     }
 
     public void setWelcomeText(String welcomeText) {
@@ -142,8 +146,8 @@ public class Visit {
         return guest;
     }
 
-    public List<VisitPerson> getPersons() {
-        return persons;
+    public List<VisitPerson> getVisitPerson() {
+        return visitPerson;
     }
 
     public String getWelcomeText() {
