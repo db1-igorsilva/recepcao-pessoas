@@ -10,15 +10,13 @@ public class GuestDTO implements Serializable {
 
     public static final long serialVersionUID = 23L;
 
-    private UUID id;
+    private UUID id = UUID.randomUUID();
     private String name;
     private RelationshipType relationshipType;
 
     // CONSTRUCTOR
 
-    public GuestDTO(String name,
-                    RelationshipType relationshipType) {
-        setId(UUID.randomUUID());
+    public GuestDTO(String name, RelationshipType relationshipType) {
         setName(name);
         setRelationshipType(relationshipType);
     }
