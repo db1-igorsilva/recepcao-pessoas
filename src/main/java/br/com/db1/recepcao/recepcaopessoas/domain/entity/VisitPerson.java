@@ -11,7 +11,8 @@ public class VisitPerson {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
-    @OneToMany(mappedBy = "visit_person", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "id_person", nullable = false, referencedColumnName = "id")
     private Person person;
 
     @ManyToOne
