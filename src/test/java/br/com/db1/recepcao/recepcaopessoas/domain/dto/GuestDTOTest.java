@@ -15,8 +15,7 @@ public class GuestDTOTest {
 
     @Test
     public void mustCreateOneGuestDTO() {
-        GuestDTO guestDTO = new GuestDTO(UUID.randomUUID(),
-                name, relationship);
+        GuestDTO guestDTO = new GuestDTO(name, relationship);
         assertNotNull(guestDTO);
         assertEquals(name, guestDTO.getName());
     }
