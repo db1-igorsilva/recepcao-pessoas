@@ -12,11 +12,11 @@ public class VisitPerson {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "id_person", nullable = false, referencedColumnName = "id")
+    @JoinColumn(name = "id_person", referencedColumnName = "id")
     private Person person;
 
     @ManyToOne
-    @JoinColumn(name = "id_visit", nullable = false, referencedColumnName = "id")
+    @JoinColumn(name = "id_visit", referencedColumnName = "id")
     private Visit visit;
 
     protected VisitPerson() { }
