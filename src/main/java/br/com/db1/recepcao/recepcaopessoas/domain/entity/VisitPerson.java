@@ -22,7 +22,7 @@ public class VisitPerson {
     protected VisitPerson() { }
 
     public VisitPerson(List<Person> persons, Visit visit) {
-        this.persons = persons;
+        this.persons.addAll(persons);
         this.visit = visit;
     }
 
