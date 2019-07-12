@@ -1,7 +1,6 @@
 package br.com.db1.recepcao.recepcaopessoas.domain.entity;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -13,7 +12,7 @@ public class VisitPerson {
     private UUID id;
 
     @OneToMany(mappedBy = "visit_person", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Person> persons;
+    private Person person;
 
     @ManyToOne
     @JoinColumn(name = "id_visit", nullable = false, referencedColumnName = "id")
@@ -21,8 +20,8 @@ public class VisitPerson {
 
     protected VisitPerson() { }
 
-    public VisitPerson(List<Person> persons, Visit visit) {
-        this.persons.addAll(persons);
+    public VisitPerson(Person person, Visit visit) {
+        this.person = person;
         this.visit = visit;
     }
 
@@ -32,12 +31,12 @@ public class VisitPerson {
         return id;
     }
 
-    public List<Person> getPersons() {
-        return persons;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setPersons(List<Person> persons) {
-        this.persons = persons;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     public Visit getVisit() {
@@ -47,4 +46,5 @@ public class VisitPerson {
     public void setVisit(Visit visit) {
         this.visit = visit;
     }
+
 }
