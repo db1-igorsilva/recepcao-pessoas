@@ -1,7 +1,5 @@
 package br.com.db1.recepcao.recepcaopessoas.domain.entity;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -10,18 +8,8 @@ import java.util.UUID;
 public class Guest {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator",
-            parameters = {
-                    @org.hibernate.annotations.Parameter(
-                            name = "uuid_gen_strategy_class",
-                            value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
-                    )
-            }
-    )
-    private UUID uuid;
+    @Column(name = "id", nullable = false, unique = true)
+    private UUID id = UUID.randomUUID();
 
     @Column(name = "name", nullable = false, unique = true)
     private String name;
@@ -74,8 +62,8 @@ public class Guest {
         this.relationshipType = relationshipType;
     }
 
-    public UUID getUuid() {
-        return uuid;
+    public UUID getId() {
+        return id;
     }
 
     public String getName() {

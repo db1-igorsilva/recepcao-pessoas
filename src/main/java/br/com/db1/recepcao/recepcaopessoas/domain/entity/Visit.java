@@ -1,7 +1,5 @@
 package br.com.db1.recepcao.recepcaopessoas.domain.entity;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -14,18 +12,8 @@ import java.util.UUID;
 public class Visit {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator",
-            parameters = {
-                    @org.hibernate.annotations.Parameter(
-                            name = "uuid_gen_strategy_class",
-                            value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
-                    )
-            }
-    )
-    private UUID uuid;
+    @Column(name = "id", nullable = false, unique = true)
+    private UUID id = UUID.randomUUID();
 
     @Column(name = "date", nullable = false)
     private LocalDate date;
@@ -37,7 +25,7 @@ public class Visit {
     private LocalTime presentationEndTime;
 
     @ManyToOne
-    @JoinColumn(name = "id_guest", referencedColumnName = "uuid")
+    @JoinColumn(name = "id_guest", referencedColumnName = "id")
     private Guest guest;
 
     @OneToMany(mappedBy = "visit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -138,8 +126,8 @@ public class Visit {
         this.welcomeText = welcomeText;
     }
 
-    public UUID getUuid() {
-        return uuid;
+    public UUID getId() {
+        return id;
     }
 
     public LocalDate getDate() {

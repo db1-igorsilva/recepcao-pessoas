@@ -1,8 +1,9 @@
 package br.com.db1.recepcao.recepcaopessoas.domain.entity;
 
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -11,18 +12,8 @@ import java.util.UUID;
 public class Person {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator",
-            parameters = {
-                    @org.hibernate.annotations.Parameter(
-                            name = "uuid_gen_strategy_class",
-                            value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
-                    )
-            }
-    )
-    private UUID uuid;
+    @Column(name = "id", nullable = false, unique = true)
+    private UUID id = UUID.randomUUID();
 
     @Column(name = "name", nullable = false)
     private String name;
