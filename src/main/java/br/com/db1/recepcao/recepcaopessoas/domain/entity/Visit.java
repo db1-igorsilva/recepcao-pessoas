@@ -34,6 +34,19 @@ public class Visit {
     @Column(name = "welcome_text", nullable = false)
     private String welcomeText;
 
+    // CONSTRUCTOR
+
+    protected Visit() {}
+
+    private Visit(VisitBuilder builder) {
+        date = builder.date;
+        presentationStartTime = builder.presentationStartTime;
+        presentationEndTime = builder.presentationEndTime;
+        guest = builder.guest;
+        persons = builder.persons;
+        welcomeText = builder.welcomeText;
+    }
+
     // BUILDER
 
     public static class VisitBuilder {
@@ -79,19 +92,6 @@ public class Visit {
             return new Visit(this);
         }
 
-    }
-
-    // CONSTRUCTOR
-
-    protected Visit() {}
-
-    private Visit(VisitBuilder builder) {
-        date = builder.date;
-        presentationStartTime = builder.presentationStartTime;
-        presentationEndTime = builder.presentationEndTime;
-        guest = builder.guest;
-        persons = builder.persons;
-        welcomeText = builder.welcomeText;
     }
 
     // METHODS
