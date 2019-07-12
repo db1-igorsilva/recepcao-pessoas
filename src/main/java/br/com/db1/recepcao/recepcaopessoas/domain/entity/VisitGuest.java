@@ -19,6 +19,9 @@ public class VisitGuest {
     @JoinColumn(name = "id_visit", nullable = false, referencedColumnName = "id")
     private Visit visit;
 
-    public VisitGuest() { }
+    public VisitGuest(Guest guest, Visit visit) {
+        this.guest = guest;
+        this.visit = visit;
+    }
 
 }
