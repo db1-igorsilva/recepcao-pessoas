@@ -1,6 +1,7 @@
 package br.com.db1.recepcao.recepcaopessoas.domain.entity;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -11,9 +12,8 @@ public class VisitGuest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_guest", nullable = false, referencedColumnName = "id")
-    private Guest guest;
+    @OneToMany(name = "person", nullable = false)
+    private List<Person> person;
 
     @ManyToOne
     @JoinColumn(name = "id_visit", nullable = false, referencedColumnName = "id")
