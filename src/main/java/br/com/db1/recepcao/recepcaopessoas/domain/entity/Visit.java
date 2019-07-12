@@ -13,7 +13,7 @@ public class Visit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private UUID uuid;
 
     @Column(name = "date", nullable = false)
     private LocalDate date;
@@ -25,7 +25,7 @@ public class Visit {
     private LocalTime presentationEndTime;
 
     @ManyToOne
-    @JoinColumn(name = "id_guest", referencedColumnName = "id")
+    @JoinColumn(name = "id_guest", referencedColumnName = "uuid")
     private Guest guest;
 
     @OneToMany(mappedBy = "visit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -126,8 +126,8 @@ public class Visit {
         this.welcomeText = welcomeText;
     }
 
-    public UUID getId() {
-        return id;
+    public UUID getUuid() {
+        return uuid;
     }
 
     public LocalDate getDate() {

@@ -9,14 +9,14 @@ public class VisitPerson {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private UUID uuid;
 
     @ManyToOne
-    @JoinColumn(name = "id_person", referencedColumnName = "id")
+    @JoinColumn(name = "id_person", referencedColumnName = "uuid")
     private Person person;
 
     @ManyToOne
-    @JoinColumn(name = "id_visit", referencedColumnName = "id")
+    @JoinColumn(name = "id_visit", referencedColumnName = "uuid")
     private Visit visit;
 
     protected VisitPerson() { }
@@ -28,8 +28,8 @@ public class VisitPerson {
 
     // GETTERS AND SETTERS
 
-    public UUID getId() {
-        return id;
+    public UUID getUuid() {
+        return uuid;
     }
 
     public Person getPerson() {

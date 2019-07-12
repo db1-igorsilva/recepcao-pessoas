@@ -10,7 +10,7 @@ public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private UUID uuid;
 
     @Column(name = "name", nullable = false)
     private String name;

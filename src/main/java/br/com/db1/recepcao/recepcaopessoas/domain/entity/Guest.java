@@ -9,7 +9,7 @@ public class Guest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private UUID uuid;
 
     @Column(name = "name", nullable = false, unique = true)
     private String name;
@@ -62,8 +62,8 @@ public class Guest {
         this.relationshipType = relationshipType;
     }
 
-    public UUID getId() {
-        return id;
+    public UUID getUuid() {
+        return uuid;
     }
 
     public String getName() {
