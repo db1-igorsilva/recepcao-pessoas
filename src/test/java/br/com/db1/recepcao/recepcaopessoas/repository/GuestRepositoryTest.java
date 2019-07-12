@@ -5,81 +5,99 @@ import br.com.db1.recepcao.recepcaopessoas.domain.entity.RelationshipType;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+@RunWith(MockitoJUnitRunner.class)
 public class GuestRepositoryTest {
 
-    private String universityGuestName = "University";
     private String clientGuestName = "Client";
-    private String supplierGuestName = "Supplier";
     private String otherGuestName = "Other";
+    private String supplierWhoIsActuallyAClientName = "Supplier";
+    private String universityGuestName = "University";
 
-    private Guest universityGuest = new Guest.GuestBuilder()
-            .guestName(universityGuestName)
-            .relatedBy(RelationshipType.UNIVERSITY)
-            .build();
     private Guest clientGuest = new Guest.GuestBuilder()
             .guestName(clientGuestName)
             .relatedBy(RelationshipType.CLIENT)
-            .build();
-    private Guest supplierGuest = new Guest.GuestBuilder()
-            .guestName(supplierGuestName)
-            .relatedBy(RelationshipType.SUPPLER)
             .build();
     private Guest otherGuest = new Guest.GuestBuilder()
             .guestName(otherGuestName)
             .relatedBy(RelationshipType.OTHER)
             .build();
-    private List<Guest> guests = asList(universityGuest, clientGuest, supplierGuest, otherGuest);
+    private Guest supplierWhoIsActuallyAClientGuest = new Guest.GuestBuilder()
+            .guestName(supplierWhoIsActuallyAClientName)
+            .relatedBy(RelationshipType.CLIENT)
+            .build();
+    private Guest universityGuest = new Guest.GuestBuilder()
+            .guestName(universityGuestName)
+            .relatedBy(RelationshipType.UNIVERSITY)
+            .build();
+    private List<Guest> guests = asList(clientGuest, otherGuest, supplierWhoIsActuallyAClientGuest, universityGuest);
 
     private GuestRepository fakeGuestRepository = mock(GuestRepository.class);
 
     @Before
     public void before() {
-        fakeGuestRepository.saveAll(guests);
-//        when(fakeGuestRepository.findByName(universityGuestName)).thenReturn(universityGuest);
-//        when(fakeGuestRepository.findByName(clientGuestName)).thenReturn(clientGuest);
-//        when(fakeGuestRepository.findByName(supplierGuestName)).thenReturn(supplierGuest);
-//        when(fakeGuestRepository.findByName(otherGuestName)).thenReturn(otherGuest);
+        when(fakeGuestRepository.saveAll(guests)).thenReturn(guests);
+        whenReturnByName(clientGuestName, clientGuest);
     }
 
     @Test
-    public void mustReturnUniversityGuestWhenUniversityGuestNameIsPassed() {
-        Guest guest = fakeGuestRepository.findByName(universityGuestName);
-        assertThat(guest, not(null));
-        assertEquals(universityGuest, guest);
+    public void mustReturnAllSavedGuests() {
+        List<Guest> savedGuests = fakeGuestRepository.saveAll(guests);
+        assertFalse(savedGuests.isEmpty());
+        assertEquals(guests.size(), savedGuests.size());
     }
 
     @Test
-    public void mustReturnClientGuestWhenUniversityGuestNameIsPassed() {
+    public void mustReturnClientGuestWhenClientGuestNameIsPassed() {
         Guest guest = fakeGuestRepository.findByName(clientGuestName);
-        assertThat(guest, not(null));
-        assertEquals(clientGuestName, guest);
+        assertEquals(clientGuest, guest);
     }
 
     @Test
-    public void mustReturnSupplierGuestWhenUniversityGuestNameIsPassed() {
-        Guest guest = fakeGuestRepository.findByName(supplierGuestName);
-        assertThat(guest, not(null));
-        assertEquals(supplierGuestName, guest);
+    public void mustReturnNullWhenInexistentNameIsPassed() {
+        Guest guest = fakeGuestRepository.findByName("Random Name");
+        assertNull(guest);
     }
 
     @Test
-    public void mustReturnOtherGuestWhenUniversityGuestNameIsPassed() {
-        Guest guest = fakeGuestRepository.findByName(otherGuestName);
-        assertThat(guest, not(null));
-        assertEquals(otherGuestName, guest);
+    public void mustReturnAllClientsWhenClientRelationshipIsPassed() {
+        RelationshipType relationship = RelationshipType.CLIENT;
+        whenReturnByRelationship(relationship);
+        List<Guest> clients = fakeGuestRepository.findByRelationshipType(relationship);
+        assertEquals(2, clients.size());
+        assertTrue(clients.stream()
+                .allMatch(client -> client.getRelationshipType()
+                        .equals(relationship)));
+    }
+
+    @Test
+    public void mustReturnNoneGuestWhenSupplierRelationshipIsPassed() {
+        RelationshipType relationship = RelationshipType.SUPPLIER;
+        whenReturnByRelationship(relationship);
+        List<Guest> suppliers = fakeGuestRepository.findByRelationshipType(relationship);
+        assertTrue(suppliers.isEmpty());
+    }
+
+    private void whenReturnByRelationship(RelationshipType relationship) {
+        when(fakeGuestRepository.findByRelationshipType(relationship))
+                .thenReturn(guests.stream()
+                        .filter(guest -> guest.getRelationshipType()
+                                .equals(relationship))
+                        .collect(Collectors.toList()));
+    }
+
+    private void whenReturnByName(String name, Guest guest) {
+        when(fakeGuestRepository.findByName(name))
+                .thenReturn(guest);
     }
 
 }
