@@ -3,6 +3,7 @@ package br.com.db1.recepcao.recepcaopessoas.domain.entity;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,11 +24,12 @@ public class Visit {
     @Column(name = "presentation_end_time", nullable = false)
     private LocalTime presentationEndTime;
 
-    @Column(name = "guest", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_guest", nullable = false, referencedColumnName = "id")
     private Guest guest;
 
-    @Column(name = "persons", nullable = false)
-    private List<String> persons;
+    @OneToMany(mappedBy = "visit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<VisitPerson> persons = new ArrayList<>();
 
     @Column(name = "welcome_text", nullable = false)
     private String welcomeText;
@@ -40,7 +42,7 @@ public class Visit {
         private LocalTime presentationStartTime;
         private LocalTime presentationEndTime;
         private Guest guest;
-        private List<String> persons;
+        private List<VisitPerson> persons;
         private String welcomeText;
 
         public VisitBuilder onDate(LocalDate date) {
@@ -63,7 +65,7 @@ public class Visit {
             return this;
         }
 
-        public VisitBuilder byPersons(List<String> persons) {
+        public VisitBuilder byVisitPerson(List<VisitPerson> persons) {
             this.persons = persons;
             return this;
         }
@@ -112,8 +114,8 @@ public class Visit {
         this.guest = guest;
     }
 
-    public void setPersons(List<String> persons) {
-        this.persons = persons;
+    public void setPersons(List<Person> persons) {
+        this.persons.add(new VisitPerson(persons, this));
     }
 
     public void setWelcomeText(String welcomeText) {
@@ -140,7 +142,7 @@ public class Visit {
         return guest;
     }
 
-    public List<String> getPersons() {
+    public List<VisitPerson> getPersons() {
         return persons;
     }
 
