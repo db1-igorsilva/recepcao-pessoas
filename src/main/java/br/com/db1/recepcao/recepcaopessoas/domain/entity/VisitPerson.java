@@ -8,11 +8,11 @@ import java.util.UUID;
 public class VisitPerson {
 
     @Id
-    @Column(name = "id", nullable = false, unique = true)
-    private UUID id = UUID.randomUUID();
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "id_person", referencedColumnName = "id")
+    @JoinColumn(name = "id_person",  referencedColumnName = "id")
     private Person person;
 
     @ManyToOne
@@ -22,6 +22,7 @@ public class VisitPerson {
     protected VisitPerson() { }
 
     public VisitPerson(Person person, Visit visit) {
+        id = UUID.randomUUID();
         this.person = person;
         this.visit = visit;
     }

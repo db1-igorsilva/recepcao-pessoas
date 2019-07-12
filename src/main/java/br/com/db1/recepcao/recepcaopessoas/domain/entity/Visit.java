@@ -12,7 +12,7 @@ import java.util.UUID;
 public class Visit {
 
     @Id
-    @Column(name = "id", nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id = UUID.randomUUID();
 
     @Column(name = "date", nullable = false)

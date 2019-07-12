@@ -1,9 +1,6 @@
 package br.com.db1.recepcao.recepcaopessoas.domain.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -12,7 +9,7 @@ import java.util.UUID;
 public class Person {
 
     @Id
-    @Column(name = "id", nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id = UUID.randomUUID();
 
     @Column(name = "name", nullable = false)
@@ -59,6 +56,40 @@ public class Person {
             return new Person(this);
         }
 
+    }
+
+    // GETTERS AND SETTERS
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
 }
