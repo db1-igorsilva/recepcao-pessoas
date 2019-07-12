@@ -21,6 +21,8 @@ public class Person {
     @Column(name = "birthDate", nullable = false)
     private LocalDate birthDate;
 
+    protected Person() { }
+
     private Person(PersonBuilder builder) {
         this.name = builder.name;
         this.cpf = builder.cpf;
