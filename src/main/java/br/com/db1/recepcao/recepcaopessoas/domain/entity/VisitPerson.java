@@ -8,7 +8,6 @@ import java.util.UUID;
 public class VisitPerson {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id = UUID.randomUUID();
 
     @ManyToOne
@@ -22,7 +21,6 @@ public class VisitPerson {
     protected VisitPerson() { }
 
     public VisitPerson(Person person, Visit visit) {
-//        id = UUID.randomUUID();
         this.person = person;
         this.visit = visit;
     }

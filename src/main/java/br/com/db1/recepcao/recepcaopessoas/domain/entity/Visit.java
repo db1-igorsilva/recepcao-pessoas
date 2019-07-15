@@ -12,7 +12,6 @@ import java.util.UUID;
 public class Visit {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id = UUID.randomUUID();
 
     @Column(name = "date", nullable = false)
@@ -39,7 +38,6 @@ public class Visit {
     protected Visit() {}
 
     private Visit(VisitBuilder builder) {
-//        id = UUID.randomUUID();
         date = builder.date;
         presentationStartTime = builder.presentationStartTime;
         presentationEndTime = builder.presentationEndTime;

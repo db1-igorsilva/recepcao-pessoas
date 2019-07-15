@@ -9,8 +9,7 @@ import java.util.UUID;
 public class Person {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private UUID id = UUID.randomUUID();
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -24,7 +23,6 @@ public class Person {
     protected Person() { }
 
     private Person(PersonBuilder builder) {
-        id = UUID.randomUUID();
         name = builder.name;
         cpf = builder.cpf;
         birthDate = builder.birthDate;
