@@ -1,6 +1,7 @@
 package br.com.db1.recepcao.recepcaopessoas.domain.dto;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.UUID;
 
 public class PersonDTO {
@@ -10,12 +11,33 @@ public class PersonDTO {
     private String cpf;
     private LocalDate birthDate;
 
+    // CONSTRUCTOR
+
     private PersonDTO(UUID id, String name, String cpf, LocalDate birthDate) {
         setId(id);
         setName(name);
         setCpf(cpf);
         setBirthDate(birthDate);
     }
+
+    // EQUALS AND HASH
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PersonDTO)) return false;
+        PersonDTO personDTO = (PersonDTO) o;
+        return getId().equals(personDTO.getId()) &&
+                getName().equals(personDTO.getName()) &&
+                getCpf().equals(personDTO.getCpf()) &&
+                getBirthDate().equals(personDTO.getBirthDate());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getCpf());
+    }
+
 
     // GETTERS AND SETTERS
 
