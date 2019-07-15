@@ -1,10 +1,13 @@
 package br.com.db1.recepcao.recepcaopessoas.domain.dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.UUID;
 
-public class PersonDTO {
+public class PersonDTO implements Serializable {
+
+    public static final long serialVersionUID = 23L;
 
     private UUID id;
     private String name;
