@@ -16,7 +16,8 @@ public class GuestDTO implements Serializable {
 
     // CONSTRUCTOR
 
-    public GuestDTO(UUID id, String name, RelationshipType relationshipType) {
+    public GuestDTO(UUID id, String name,
+                    RelationshipType relationshipType) {
         setId(id);
         setName(name);
         setRelationshipType(relationshipType);
