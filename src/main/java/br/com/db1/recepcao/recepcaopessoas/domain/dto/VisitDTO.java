@@ -1,7 +1,6 @@
 package br.com.db1.recepcao.recepcaopessoas.domain.dto;
 
 import br.com.db1.recepcao.recepcaopessoas.domain.entity.Guest;
-import br.com.db1.recepcao.recepcaopessoas.domain.entity.Person;
 import br.com.db1.recepcao.recepcaopessoas.domain.entity.VisitPerson;
 
 import java.io.Serializable;
