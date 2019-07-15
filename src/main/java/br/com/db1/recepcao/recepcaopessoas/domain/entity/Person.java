@@ -10,7 +10,7 @@ public class Person {
 
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id = UUID.randomUUID();
+    private UUID id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -24,10 +24,10 @@ public class Person {
     protected Person() { }
 
     private Person(PersonBuilder builder) {
-//        id = UUID.randomUUID();
-        this.name = builder.name;
-        this.cpf = builder.cpf;
-        this.birthDate = builder.birthDate;
+        id = UUID.randomUUID();
+        name = builder.name;
+        cpf = builder.cpf;
+        birthDate = builder.birthDate;
     }
 
     // BUILDER
