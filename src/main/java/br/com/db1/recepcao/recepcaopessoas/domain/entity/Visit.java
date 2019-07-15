@@ -12,7 +12,7 @@ import java.util.UUID;
 public class Visit {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id = UUID.randomUUID();
 
     @Column(name = "date", nullable = false)
@@ -28,7 +28,7 @@ public class Visit {
     @JoinColumn(name = "id_guest", referencedColumnName = "id")
     private Guest guest;
 
-    @OneToMany(mappedBy = "visit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "visit_person", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<VisitPerson> visitPerson = new ArrayList<>();
 
     @Column(name = "welcome_text", nullable = false)
@@ -39,6 +39,7 @@ public class Visit {
     protected Visit() {}
 
     private Visit(VisitBuilder builder) {
+//        id = UUID.randomUUID();
         date = builder.date;
         presentationStartTime = builder.presentationStartTime;
         presentationEndTime = builder.presentationEndTime;

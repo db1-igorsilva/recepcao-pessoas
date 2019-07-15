@@ -8,7 +8,7 @@ import java.util.UUID;
 public class Guest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id = UUID.randomUUID();
 
     @Column(name = "name", nullable = false, unique = true)
@@ -23,6 +23,7 @@ public class Guest {
     protected Guest() {}
 
     private Guest(GuestBuilder builder) {
+//        id = UUID.randomUUID();
         name = builder.name;
         relationshipType = builder.relationshipType;
     }

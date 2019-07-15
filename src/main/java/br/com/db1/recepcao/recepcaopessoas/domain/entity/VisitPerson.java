@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "visit_guest")
+@Table(name = "visit_person")
 public class VisitPerson {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private UUID id = UUID.randomUUID();
 
     @ManyToOne
     @JoinColumn(name = "id_person",  referencedColumnName = "id")
@@ -22,7 +22,7 @@ public class VisitPerson {
     protected VisitPerson() { }
 
     public VisitPerson(Person person, Visit visit) {
-        id = UUID.randomUUID();
+//        id = UUID.randomUUID();
         this.person = person;
         this.visit = visit;
     }
