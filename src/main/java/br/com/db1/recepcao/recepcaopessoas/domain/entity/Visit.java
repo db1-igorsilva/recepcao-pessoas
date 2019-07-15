@@ -27,7 +27,7 @@ public class Visit {
     @JoinColumn(name = "id_guest", referencedColumnName = "id")
     private Guest guest;
 
-    @OneToMany(mappedBy = "visit_person", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "visit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<VisitPerson> visitPerson = new ArrayList<>();
 
     @Column(name = "welcome_text", nullable = false)
