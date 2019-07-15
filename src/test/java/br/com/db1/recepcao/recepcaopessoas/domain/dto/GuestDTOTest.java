@@ -10,12 +10,13 @@ import static org.junit.Assert.assertNotNull;
 
 public class GuestDTOTest {
 
+    private UUID id = UUID.randomUUID();
     private String name = "Guest Name";
     private RelationshipType relationship = RelationshipType.OTHER;
 
     @Test
     public void mustCreateOneGuestDTO() {
-        GuestDTO guestDTO = new GuestDTO(name, relationship);
+        GuestDTO guestDTO = new GuestDTO(id, name, relationship);
         assertNotNull(guestDTO);
         assertEquals(name, guestDTO.getName());
     }
