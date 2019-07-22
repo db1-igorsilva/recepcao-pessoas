@@ -1,8 +1,10 @@
+server:
+  port: 3000
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/
     username: postgres
-    password: 15935746
+    password: postgres
   jpa:
     show-sql: true
     generate-ddl: true
