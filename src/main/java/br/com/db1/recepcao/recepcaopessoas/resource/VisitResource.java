@@ -16,7 +16,7 @@ public class VisitResource {
     @Autowired
     private VisitService visitService;
 
-    @PostMapping
+    @PostMapping(value = "/post")
     public VisitDTO post(@RequestBody VisitDTO body) {
         return visitService.save(body);
     }
