@@ -21,11 +21,11 @@ public class VisitResource {
         return visitService.save(body);
     }
 
-    @GetMapping
+    @GetMapping(value = "/getAll")
     public List<VisitDTO> getAll() {
         return visitService.getAll();
     }
-    
+
     @GetMapping(value = "/getByDate/{date}")
     public List<VisitDTO> getByDate(@PathVariable("date") LocalDate date) {
         return visitService.getByDate(date);
