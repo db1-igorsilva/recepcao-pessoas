@@ -38,6 +38,14 @@ public class VisitService {
 
     // READ
 
+    public List<VisitDTO> getAll() {
+        List<Visit> visits = visitRepository.findAll();
+        List<VisitDTO> allVisitsInDto = visits.stream()
+                .map(visit -> visitToDto(visit))
+                .collect(Collectors.toList());
+        return allVisitsInDto;
+    }
+
     public List<VisitDTO> getByDate(LocalDate date) {
         List<Visit> visitsOnThatDate = visitRepository.findByDate(date);
         List<VisitDTO> visitsDtos = visitsOnThatDate.stream()
