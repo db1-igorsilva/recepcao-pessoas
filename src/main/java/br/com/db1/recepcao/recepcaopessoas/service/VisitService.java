@@ -46,6 +46,11 @@ public class VisitService {
         return allVisitsInDto;
     }
 
+    public VisitDTO getOne(UUID id) {
+        Visit visit = visitRepository.getOne(id);
+        return visitToDto(visit);
+    }
+
     public List<VisitDTO> getByDate(LocalDate date) {
         List<Visit> visitsOnThatDate = visitRepository.findByDate(date);
         List<VisitDTO> visitsDtos = visitsOnThatDate.stream()
