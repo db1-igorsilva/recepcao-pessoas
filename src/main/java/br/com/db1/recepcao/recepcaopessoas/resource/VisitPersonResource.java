@@ -16,16 +16,19 @@ public class VisitPersonResource {
     @Autowired
     private VisitPersonService visitPersonService;
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping(value = "/post")
     public VisitPersonDTO post(@RequestBody VisitPersonDTO body) {
         return visitPersonService.save(body);
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping(value = "/getAll")
     public List<VisitPersonDTO> getAll() {
         return visitPersonService.getAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable("id") UUID id) {
         visitPersonService.delete(id);
