@@ -12,16 +12,14 @@ public class PersonDTO implements Serializable {
     private UUID id;
     private String name;
     private String cpf;
-    private LocalDate birthDate;
 
     // CONSTRUCTOR
 
     private PersonDTO(UUID id, String name,
-                      String cpf, LocalDate birthDate) {
+                      String cpf) {
         setId(id);
         setName(name);
         setCpf(cpf);
-        setBirthDate(birthDate);
     }
 
     // EQUALS AND HASH
@@ -33,15 +31,13 @@ public class PersonDTO implements Serializable {
         PersonDTO personDTO = (PersonDTO) o;
         return getId().equals(personDTO.getId()) &&
                 getName().equals(personDTO.getName()) &&
-                getCpf().equals(personDTO.getCpf()) &&
-                getBirthDate().equals(personDTO.getBirthDate());
+                getCpf().equals(personDTO.getCpf());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getCpf());
     }
-
 
     // GETTERS AND SETTERS
 
@@ -67,14 +63,6 @@ public class PersonDTO implements Serializable {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
     }
 
 }
