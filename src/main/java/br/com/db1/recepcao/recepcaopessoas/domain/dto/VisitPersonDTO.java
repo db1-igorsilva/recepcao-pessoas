@@ -6,6 +6,8 @@ import java.util.UUID;
 
 public class VisitPersonDTO implements Serializable {
 
+    public static final long serialVersionUID = 23L;
+
     private UUID id;
     private String visit;
     private String person;
