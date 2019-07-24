@@ -15,7 +15,7 @@ public class PersonDTO implements Serializable {
 
     // CONSTRUCTOR
 
-    private PersonDTO(UUID id, String name,
+    public PersonDTO(UUID id, String name,
                       String cpf) {
         setId(id);
         setName(name);
