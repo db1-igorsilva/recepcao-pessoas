@@ -28,6 +28,12 @@ public class VisitResource {
         return visitService.getAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
+    @GetMapping(value = "/getOne/{id}")
+    public VisitDTO getOne(@PathVariable("id") UUID id) {
+        return visitService.getOne(id);
+    }
+
     @GetMapping(value = "/getByDate/{date}")
     public List<VisitDTO> getByDate(@PathVariable("date") LocalDate date) {
         return visitService.getByDate(date);
