@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping(value = "/person")
 public class PersonResource {
@@ -16,16 +15,19 @@ public class PersonResource {
     @Autowired
     private PersonService personService;
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping(value = "/post")
     public PersonDTO post(@RequestBody PersonDTO body) {
         return personService.save(body);
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping(value = "/getAll")
     public List<PersonDTO> getAll() {
         return personService.getAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable("id") UUID id) {
         personService.delete(id);
