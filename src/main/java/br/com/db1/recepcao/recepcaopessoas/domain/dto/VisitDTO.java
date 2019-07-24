@@ -18,7 +18,7 @@ public class VisitDTO implements Serializable {
     private LocalDate date;
     private LocalTime presentationStartTime;
     private LocalTime presentationEndTime;
-    private UUID guest;
+    private String guest;
     private List<VisitPerson> visitPerson;
     private String welcomeText;
 
@@ -27,7 +27,7 @@ public class VisitDTO implements Serializable {
     public VisitDTO(UUID id, LocalDate date,
                     LocalTime presentationStartTime,
                     LocalTime presentationEndTime,
-                    UUID guest,
+                    String guest,
                     List<VisitPerson> persons,
                     String welcomeText) {
         setId(id);
@@ -94,11 +94,11 @@ public class VisitDTO implements Serializable {
         this.presentationEndTime = presentationEndTime;
     }
 
-    public UUID getGuest() {
+    public String getGuest() {
         return guest;
     }
 
-    public void setGuest(UUID guest) {
+    public void setGuest(String guest) {
         this.guest = guest;
     }
 
