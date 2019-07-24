@@ -17,15 +17,11 @@ public class Person {
     @Column(name = "cpf", nullable = false, unique = true)
     private String cpf;
 
-    @Column(name = "birthDate", nullable = false)
-    private LocalDate birthDate;
-
     protected Person() { }
 
     private Person(PersonBuilder builder) {
         name = builder.name;
         cpf = builder.cpf;
-        birthDate = builder.birthDate;
     }
 
     // BUILDER
@@ -34,7 +30,6 @@ public class Person {
 
         private String name;
         private String cpf;
-        private LocalDate birthDate;
 
         public PersonBuilder personName(String name) {
             this.name = name;
@@ -43,11 +38,6 @@ public class Person {
 
         public PersonBuilder personCpf(String cpf) {
             this.cpf = cpf;
-            return this;
-        }
-
-        public PersonBuilder birthDate(LocalDate birthDate) {
-            this.birthDate = birthDate;
             return this;
         }
 
@@ -81,14 +71,6 @@ public class Person {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
     }
 
 }
