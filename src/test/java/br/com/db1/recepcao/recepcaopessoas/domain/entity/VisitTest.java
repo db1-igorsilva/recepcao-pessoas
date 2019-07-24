@@ -23,12 +23,10 @@ public class VisitTest {
     private Person firstPerson = new Person.PersonBuilder()
                                             .personName("First Guest")
                                             .personCpf("107.463.599-00")
-                                            .birthDate(LocalDate.parse("2000-11-16"))
                                             .build();
     private Person secondPerson = new Person.PersonBuilder()
                                             .personName("Second Guest")
                                             .personCpf("107.465.599-00")
-                                            .birthDate(LocalDate.parse("2000-11-16"))
                                             .build();
     private String welcomeText = "W3lcome, Company guests";
     private Visit visit;
