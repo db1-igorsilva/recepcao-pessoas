@@ -2,6 +2,7 @@ package br.com.db1.recepcao.recepcaopessoas.service;
 
 import br.com.db1.recepcao.recepcaopessoas.domain.dto.PersonDTO;
 import br.com.db1.recepcao.recepcaopessoas.domain.entity.Person;
+import br.com.db1.recepcao.recepcaopessoas.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class PersonService {
 
     // READ
 
-    public PersonDTO getAll() {
+    public List<PersonDTO> getAll() {
         List<Person> persons = personRepository.findAll();
         List<PersonDTO> allPersonsInDto = persons.stream()
                 .map(person -> personToDto(person))
