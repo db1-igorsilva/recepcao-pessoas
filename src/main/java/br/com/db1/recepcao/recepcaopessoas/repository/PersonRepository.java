@@ -9,6 +9,6 @@ import java.util.UUID;
 @Repository
 public interface PersonRepository extends JpaRepository<Person, UUID> {
 
-    
+    Person getByCpf(String cpf);
 
 }
