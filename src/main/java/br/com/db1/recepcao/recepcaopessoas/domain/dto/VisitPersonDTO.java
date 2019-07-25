@@ -9,12 +9,12 @@ public class VisitPersonDTO implements Serializable {
     public static final long serialVersionUID = 23L;
 
     private UUID id;
-    private String visit;
+    private UUID visit;
     private String person;
 
     // CONSTRUCTOR
 
-    public VisitPersonDTO(UUID id, String visit, String person) {
+    public VisitPersonDTO(UUID id, UUID visit, String person) {
         this.id = id;
         this.visit = visit;
         this.person = person;
@@ -48,11 +48,11 @@ public class VisitPersonDTO implements Serializable {
         this.id = id;
     }
 
-    public String getVisit() {
+    public UUID getVisit() {
         return visit;
     }
 
-    public void setVisit(String visit) {
+    public void setVisit(UUID visit) {
         this.visit = visit;
     }
 
