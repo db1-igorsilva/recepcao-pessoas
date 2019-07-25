@@ -35,7 +35,7 @@ public class PersonService {
     }
 
     public PersonDTO getByCpf(String cpf) {
-        Person person = personRepository.getByCpf(cpf);
+        Person person = personRepository.findByCpf(cpf);
         return personToDto(person);
     }
 

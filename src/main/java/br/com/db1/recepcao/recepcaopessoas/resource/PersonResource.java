@@ -28,7 +28,7 @@ public class PersonResource {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @GetMapping(value = "/getByCpf/{cpf}")
+    @GetMapping(value = "/findByCpf/{cpf}")
     public PersonDTO getByCpf(@PathVariable("cpf") String cpf) {
         return personService.getByCpf(cpf);
     }
