@@ -34,6 +34,11 @@ public class PersonService {
         return allPersonsInDto;
     }
 
+    public PersonDTO getOne(UUID id) {
+        Person person = personRepository.getOne(id);
+        return personToDto(person);
+    }
+
     // UPDATE
 
     // DELETE
