@@ -19,7 +19,7 @@ public class VisitPerson {
 
     protected VisitPerson() { }
 
-    public VisitPerson(String person, Visit visit) {
+    public VisitPerson(Visit visit, String person) {
         this.person = person;
         this.visit = visit;
     }
