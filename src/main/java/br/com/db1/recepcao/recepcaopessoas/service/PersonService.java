@@ -34,8 +34,8 @@ public class PersonService {
         return allPersonsInDto;
     }
 
-    public PersonDTO getOne(UUID id) {
-        Person person = personRepository.getOne(id);
+    public PersonDTO getByCpf(String cpf) {
+        Person person = personRepository.getByCpf(cpf);
         return personToDto(person);
     }
 

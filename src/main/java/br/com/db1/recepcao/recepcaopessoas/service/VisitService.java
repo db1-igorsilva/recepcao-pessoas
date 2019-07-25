@@ -91,6 +91,14 @@ public class VisitService {
     // METHODS
 
     private VisitDTO visitToDto(Visit visit) {
+        System.out.println(visit);
+        System.out.println(visit.getId());
+        System.out.println(visit.getDate());
+        System.out.println(visit.getPresentationStartTime());
+        System.out.println(visit.getPresentationEndTime());
+        System.out.println(visit.getGuest().getName());
+        System.out.println(visit.getVisitPerson());
+        System.out.println(visit.getWelcomeText());
         return new VisitDTO(visit.getId(), visit.getDate(),
                 visit.getPresentationStartTime(), visit.getPresentationEndTime(),
                 visit.getGuest().getName(), visit.getVisitPerson(), visit.getWelcomeText());
