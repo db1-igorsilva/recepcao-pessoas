@@ -28,6 +28,12 @@ public class PersonResource {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
+    @GetMapping(value = "/getOne/{id}")
+    public PersonDTO getOne(@PathVariable("id") UUID id) {
+        return personService.getOne(id);
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
     @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable("id") UUID id) {
         personService.delete(id);
