@@ -30,7 +30,6 @@ public class VisitService {
                 .startingAt(dto.getPresentationStartTime())
                 .endingAt(dto.getPresentationEndTime())
                 .byGuest(guestRepository.findByName(dto.getGuest()))
-                .byVisitPerson(dto.getVisitPerson())
                 .withWelcomeText(dto.getWelcomeText())
                 .build();
         return visitToDto(visitRepository.save(visit));
@@ -76,7 +75,6 @@ public class VisitService {
         visitToUpdate.setPresentationStartTime(dto.getPresentationStartTime());
         visitToUpdate.setPresentationEndTime(dto.getPresentationEndTime());
         visitToUpdate.setGuest(guestRepository.findByName(dto.getGuest()));
-        visitToUpdate.setVisitPerson(dto.getVisitPerson());
         visitToUpdate.setWelcomeText(dto.getWelcomeText());
         return visitToDto(visitRepository.save(visitToUpdate));
     }
@@ -97,11 +95,10 @@ public class VisitService {
         System.out.println(visit.getPresentationStartTime());
         System.out.println(visit.getPresentationEndTime());
         System.out.println(visit.getGuest().getName());
-        System.out.println(visit.getVisitPerson());
         System.out.println(visit.getWelcomeText());
         return new VisitDTO(visit.getId(), visit.getDate(),
                 visit.getPresentationStartTime(), visit.getPresentationEndTime(),
-                visit.getGuest().getName(), visit.getVisitPerson(), visit.getWelcomeText());
+                visit.getGuest().getName(), visit.getWelcomeText());
     }
 
 }

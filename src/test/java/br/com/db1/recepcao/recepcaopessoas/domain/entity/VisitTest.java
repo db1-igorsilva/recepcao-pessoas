@@ -8,8 +8,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 public class VisitTest {
 
@@ -39,7 +38,6 @@ public class VisitTest {
                 .startingAt(presentationStartTime)
                 .endingAt(presentationEndTime)
                 .byGuest(guest)
-                .byVisitPerson(visitPeople)
                 .withWelcomeText(welcomeText)
                 .build();
     }
@@ -47,13 +45,6 @@ public class VisitTest {
     @Test
     public void visitCreatedOnBeforeMusntBeNull() {
         assertNotNull(visit);
-    }
-
-    @Test
-    public void mustReturnAllPersonsOnVisit() {
-        List<VisitPerson> visitPeople = visit.getVisitPerson();
-        assertThat(visitPeople, not(empty()));
-        assertEquals(2, visitPeople.size());
     }
 
 }

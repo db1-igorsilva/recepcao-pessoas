@@ -19,7 +19,6 @@ public class VisitDTO implements Serializable {
     private LocalTime presentationStartTime;
     private LocalTime presentationEndTime;
     private String guest;
-    private List<VisitPerson> visitPerson;
     private String welcomeText;
 
     // CONSTRUCTOR
@@ -28,14 +27,12 @@ public class VisitDTO implements Serializable {
                     LocalTime presentationStartTime,
                     LocalTime presentationEndTime,
                     String guest,
-                    List<VisitPerson> persons,
                     String welcomeText) {
         setId(id);
         setDate(date);
         setPresentationStartTime(presentationStartTime);
         setPresentationEndTime(presentationEndTime);
         setGuest(guest);
-        setVisitPerson(persons);
         setWelcomeText(welcomeText);
     }
 
@@ -51,7 +48,6 @@ public class VisitDTO implements Serializable {
                 presentationStartTime.equals(visitDTO.presentationStartTime) &&
                 presentationEndTime.equals(visitDTO.presentationEndTime) &&
                 guest.equals(visitDTO.guest) &&
-                visitPerson.equals(visitDTO.visitPerson) &&
                 welcomeText.equals(visitDTO.welcomeText);
     }
 
@@ -100,14 +96,6 @@ public class VisitDTO implements Serializable {
 
     public void setGuest(String guest) {
         this.guest = guest;
-    }
-
-    public List<VisitPerson> getVisitPerson() {
-        return visitPerson;
-    }
-
-    public void setVisitPerson(List<VisitPerson> visitPerson) {
-        this.visitPerson = visitPerson;
     }
 
     public String getWelcomeText() {

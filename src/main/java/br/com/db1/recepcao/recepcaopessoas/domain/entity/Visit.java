@@ -27,9 +27,6 @@ public class Visit {
     @JoinColumn(name = "id_guest", referencedColumnName = "id")
     private Guest guest;
 
-    @OneToMany(mappedBy = "visit", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<VisitPerson> visitPerson = new ArrayList<>();
-
     @Column(name = "welcome_text", nullable = false)
     private String welcomeText;
 
@@ -42,7 +39,6 @@ public class Visit {
         presentationStartTime = builder.presentationStartTime;
         presentationEndTime = builder.presentationEndTime;
         guest = builder.guest;
-        visitPerson = builder.persons;
         welcomeText = builder.welcomeText;
     }
 
@@ -54,7 +50,6 @@ public class Visit {
         private LocalTime presentationStartTime;
         private LocalTime presentationEndTime;
         private Guest guest;
-        private List<VisitPerson> persons;
         private String welcomeText;
 
         public VisitBuilder onDate(LocalDate date) {
@@ -77,11 +72,6 @@ public class Visit {
             return this;
         }
 
-        public VisitBuilder byVisitPerson(List<VisitPerson> persons) {
-            this.persons = persons;
-            return this;
-        }
-
         public VisitBuilder withWelcomeText(String welcomeText) {
             this.welcomeText = welcomeText;
             return this;
@@ -94,10 +84,6 @@ public class Visit {
     }
 
     // METHODS
-
-    public void addPerson(Person person) {
-        this.visitPerson.add(new VisitPerson(person, this));
-    }
 
     // GETTERS AND SETTERS
 
@@ -115,10 +101,6 @@ public class Visit {
 
     public void setGuest(Guest guest) {
         this.guest = guest;
-    }
-
-    public void setVisitPerson(List<VisitPerson> visitPerson) {
-        this.visitPerson = visitPerson;
     }
 
     public void setWelcomeText(String welcomeText) {
@@ -143,10 +125,6 @@ public class Visit {
 
     public Guest getGuest() {
         return guest;
-    }
-
-    public List<VisitPerson> getVisitPerson() {
-        return visitPerson;
     }
 
     public String getWelcomeText() {
