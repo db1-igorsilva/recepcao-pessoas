@@ -10,9 +10,8 @@ public class VisitPerson {
     @Id
     private UUID id = UUID.randomUUID();
 
-    @ManyToOne
-    @JoinColumn(name = "id_person",  referencedColumnName = "id")
-    private Person person;
+    @Column(name = "person", nullable = false)
+    private String person;
 
     @ManyToOne
     @JoinColumn(name = "id_visit", referencedColumnName = "id")
@@ -20,7 +19,7 @@ public class VisitPerson {
 
     protected VisitPerson() { }
 
-    public VisitPerson(Person person, Visit visit) {
+    public VisitPerson(String person, Visit visit) {
         this.person = person;
         this.visit = visit;
     }
@@ -31,11 +30,11 @@ public class VisitPerson {
         return id;
     }
 
-    public Person getPerson() {
+    public String getPerson() {
         return person;
     }
 
-    public void setPerson(Person person) {
+    public void setPerson(String person) {
         this.person = person;
     }
 
