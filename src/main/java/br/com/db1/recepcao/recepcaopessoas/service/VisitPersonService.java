@@ -20,13 +20,10 @@ public class VisitPersonService {
     @Autowired
     private VisitRepository visitRepository;
 
-    @Autowired
-    private PersonRepository personRepository;
-
     // CREATE
 
     public VisitPersonDTO save(VisitPersonDTO dto) {
-        VisitPerson visitPerson = new VisitPerson(personRepository.getOne(UUID.fromString(dto.getPerson())), visitRepository.getOne(UUID.fromString(dto.getVisit())));
+        VisitPerson visitPerson = new VisitPerson(visitRepository.getOne(dto.getVisit()), dto.getPerson());
         return visitPersonToDto(visitPersonRepository.save(visitPerson));
     }
 
@@ -53,8 +50,8 @@ public class VisitPersonService {
 
     private VisitPersonDTO visitPersonToDto(VisitPerson visitPerson) {
         return new VisitPersonDTO(visitPerson.getId(),
-                    visitPerson.getPerson().getId().toString(),
-                    visitPerson.getVisit().getId().toString());
+                    visitPerson.getVisit().getId(),
+                    visitPerson.getPerson());
     }
 
 }
