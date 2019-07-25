@@ -1,10 +1,7 @@
 package br.com.db1.recepcao.recepcaopessoas.service;
 
-import br.com.db1.recepcao.recepcaopessoas.domain.dto.PersonDTO;
 import br.com.db1.recepcao.recepcaopessoas.domain.dto.VisitPersonDTO;
-import br.com.db1.recepcao.recepcaopessoas.domain.entity.Person;
 import br.com.db1.recepcao.recepcaopessoas.domain.entity.VisitPerson;
-import br.com.db1.recepcao.recepcaopessoas.repository.PersonRepository;
 import br.com.db1.recepcao.recepcaopessoas.repository.VisitPersonRepository;
 import br.com.db1.recepcao.recepcaopessoas.repository.VisitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
