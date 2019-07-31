@@ -3,7 +3,9 @@ package br.com.db1.recepcao.recepcaopessoas.service;
 import br.com.db1.recepcao.recepcaopessoas.domain.dto.GuestDTO;
 import br.com.db1.recepcao.recepcaopessoas.domain.entity.Guest;
 import br.com.db1.recepcao.recepcaopessoas.domain.entity.RelationshipType;
+import br.com.db1.recepcao.recepcaopessoas.domain.entity.Visit;
 import br.com.db1.recepcao.recepcaopessoas.repository.GuestRepository;
+import br.com.db1.recepcao.recepcaopessoas.repository.VisitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,12 @@ public class GuestService {
 
     @Autowired
     private GuestRepository guestRepository;
+
+    @Autowired
+    private VisitService visitService;
+
+    @Autowired
+    private VisitRepository visitRepository;
 
     // CREATE
 
@@ -63,6 +71,10 @@ public class GuestService {
 
     public void delete(UUID id) {
         Guest guestToDelete = guestRepository.getOne(id);
+        List<Visit> visitsByTheGuest = visitRepository.findByGuest(guestToDelete);
+        if(!visitsByTheGuest.isEmpty()) {
+            visitsByTheGuest.stream().forEach(cascading -> visitService.delete(cascading.getId()));
+        }
         guestRepository.delete(guestToDelete);
     }
 
