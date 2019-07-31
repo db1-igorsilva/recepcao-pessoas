@@ -23,6 +23,12 @@ public class GuestResource {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
+    @GetMapping(value = "/getAll")
+    public List<GuestDTO> getAll() {
+        return guestService.getAll();
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping(value = "/getByName/{name}")
     public GuestDTO getByName(@PathVariable("name") String name) {
         return guestService.getByName(name);
