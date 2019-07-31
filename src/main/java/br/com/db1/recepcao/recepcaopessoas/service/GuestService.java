@@ -29,6 +29,14 @@ public class GuestService {
 
     // READ
 
+    public List<GuestDTO> getAll() {
+        List<Guest> guests = guestRepository.findAll();
+        List<GuestDTO> guestsDtos = guests.stream()
+                .map(guest -> guestToDto(guest))
+                .collect(Collectors.toList());
+        return guestsDtos;
+    }
+
     public GuestDTO getByName(String name) {
         Guest guest = guestRepository.findByName(name);
         return guestToDto(guest);
