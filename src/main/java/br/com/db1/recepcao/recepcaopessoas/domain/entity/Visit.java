@@ -15,14 +15,14 @@ public class Visit {
     @Column(name = "date", nullable = false)
     private LocalDate date;
 
-    @Column(name = "presentation_start_time", nullable = false)
+    @Column(name = "presentation_start_time")
     private LocalTime presentationStartTime;
 
-    @Column(name = "presentation_end_time", nullable = false)
+    @Column(name = "presentation_end_time")
     private LocalTime presentationEndTime;
 
     @ManyToOne
-    @JoinColumn(name = "id_guest", referencedColumnName = "id")
+    @JoinColumn(name = "id_guest", referencedColumnName = "id", nullable = false)
     private Guest guest;
 
     @Column(name = "welcome_text", nullable = false)

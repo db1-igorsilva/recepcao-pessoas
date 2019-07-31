@@ -14,7 +14,7 @@ public class VisitPerson {
     private String person;
 
     @ManyToOne
-    @JoinColumn(name = "id_visit", referencedColumnName = "id")
+    @JoinColumn(name = "id_visit", referencedColumnName = "id", nullable = false)
     private Visit visit;
 
     protected VisitPerson() { }
